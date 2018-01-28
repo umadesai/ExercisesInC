@@ -23,18 +23,13 @@ A function that is called with the wrong type or number of arguments.
 
 4) What are two reasons you might want to turn off code optimization?
 
-If you want to reduce compilation time, write new code, or have an easier time debugging. 
+If you want to reduce compilation time, write new code, or have an easier time debugging.
 
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
 
-<<<<<<< HEAD
 It is usually configured to generate code for the machine you are running on, so if you are running on different architectures, you might see different code.
 
-6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages 
-you get might look very different.  Why?
-=======
 6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages you get might look very different.  Why?
->>>>>>> cf2e4c9fdbd2ffad984a965c1d06a67959969c91
 
 The spelling error could be recognized as a simple syntax error by the compiler or something different, like the linker thinking a misspelled function is a function being used that's not defined in any of the standard libraries.
 
