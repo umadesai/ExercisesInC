@@ -1,7 +1,7 @@
 /* Notes on Experiments with Optimization
 *
 * Looking at the assembly language output after adding the "int x = 5" line of code, you can
-* see a corresponding line of code "movl	$5, -4(%rbp)"" that moves the value 5 between registers.
+* see a corresponding line of code "movl $5, -4(%rbp)"" that moves the value 5 between registers.
 * Once you turn on optimization using the flag -02, the corresponding line of code in the assembly
 * language output is no longer as apparent, with no clear value 5, because there are other actions
 * happening like logic operations.
