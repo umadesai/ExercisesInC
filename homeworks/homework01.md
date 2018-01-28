@@ -6,6 +6,9 @@
 
 ### Think OS Chapter 1 reading questions
 
+For each of the reading questions below, write answers in the form of
+a clear, concise, complete sentence or two.
+
 1) Give an example of a feature common in interpreted languages that is rare in compiled languages.
 
 Interpreted languages commonly support dynamic types, but compiled languages are usually limited to static types.
@@ -24,10 +27,14 @@ If you want to reduce compilation time, write new code, or have an easier time d
 
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
 
+<<<<<<< HEAD
 It is usually configured to generate code for the machine you are running on, so if you are running on different architectures, you might see different code.
 
 6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages 
 you get might look very different.  Why?
+=======
+6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages you get might look very different.  Why?
+>>>>>>> cf2e4c9fdbd2ffad984a965c1d06a67959969c91
 
 The spelling error could be recognized as a simple syntax error by the compiler or something different, like the linker thinking a misspelled function is a function being used that's not defined in any of the standard libraries.
 
