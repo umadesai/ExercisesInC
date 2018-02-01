@@ -16,6 +16,8 @@ a clear, concise, complete sentence or two.
 the ones in the book).  What is abstractly true about the system that
 is not literally true about the implementation?
 
+There are many real-world examples of virtualization. For example, sending an SMS text message seems like a very simple process. Abstractly, it seems like a simple message from one device gets sent to another. But the implementation is of course not that simple and involves many steps that have been abstracted away, including the message going through a control channel and SMSC. 
+
 2. What is the difference between a program and a process?
 A process is a software object that helps isolate each running program from the others. It is a software object that represents a running program, but is not the program itself. A process contains the text of the program, data associated with the program, the state of any pending input/output operations, and the hardware state of the program.
 
