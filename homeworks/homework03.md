@@ -28,11 +28,16 @@ GiB stands for “gibibyte,” which is 230 bytes, while GB stands for “gigaby
 
 5) How does the virtual memory system help isolate processes from each other?
 
-
+When a program reads and writes values in memory, it generates virtual addresses. The hardware, with help from the operating system, translates to physical addresses before accessing main memory. This translation is done on a per-process basis, so even if two processes generate the same virtual address, they would map to different locations in physical memory. In general, a process cannot access data belonging to another process, because there is no virtual address it can generate that maps to physical memory allocated to another process.
 
 6) Why do you think the stack and the heap are usually located at opposite ends of the address space?
 
+It may be that placing them at opposite ends of the address space makes sense because as the stack expands, it grows down toward smaller addresses, and as the heap expands, it grows up towards larger addresses.
+
 7) What Python data structure would you use to represent a sparse array?
+
+I would probably use a dictionary, with tuples of coordinates as keys.
 
 8) What is a context switch?
 
+A mechanism where the operating system can interrupt a running process, save its stae, and then run another process. 
