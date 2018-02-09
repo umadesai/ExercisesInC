@@ -18,6 +18,8 @@ With 5 bits, you can specify up to 32 values, so you would need 6 bits to specif
 2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
 Ignoring the details of the encoding scheme, how many different characters can be represented?
 
+2^32 = 4294967296 different characters
+
 3) What is the difference between "memory" and "storage" as defined in *Think OS*?
 
 In *Think OS* "storage" refers to non-volatile, longer term storage devices like hard disk drives (HDDs) and solid state drives (SSDs), while "memory" is usually some kind of random access memory (RAM).
