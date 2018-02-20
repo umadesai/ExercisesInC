@@ -27,48 +27,48 @@ int main(int argc, char **argv){
 
 	while ((ch = getopt(argc, argv, "a")) != -1){
 		switch (ch)
-    {
-      case 'a':
-        append = 1;
-        break;
-      default:
-        fprintf(stderr, "Unknown option: '%s'\n", optarg);
-        exit(1);
-    }
+		{
+			case 'a':
+			append = 1;
+			break;
+			default:
+			fprintf(stderr, "Unknown option: '%s'\n", optarg);
+			exit(1);
+		}
 	}
 
-  argc -= optind;
-  argv += optind;
+	argc -= optind;
+	argv += optind;
 	FILE *f[argc];
 
-  int i = 0;
-  while (i < argc){
-    if (append) {
-      f[i] = fopen(argv[i], "a");
-    } else {
-      f[i] = fopen(argv[i], "w");
-    }
-    i++;
-  }
+	int i = 0;
+	while (i < argc){
+		if (append) {
+			f[i] = fopen(argv[i], "a");
+		} else {
+			f[i] = fopen(argv[i], "w");
+		}
+		i++;
+	}
 
 	char input[100];
 	while (scanf("%79[^\n]\n", input) == 1) {
-    	printf("%s\n", input);
+		printf("%s\n", input);
 
-	    for (i = 0; i < argc; i++) {
-        if (f[i] == NULL) {
-          printf("Error\n");
-          exit(1);
-        }
-	      fprintf(f[i], "%s\n", input);
-  		}
-  	}
+		for (i = 0; i < argc; i++) {
+			if (f[i] == NULL) {
+				printf("Error\n");
+				exit(1);
+			}
+			fprintf(f[i], "%s\n", input);
+		}
+	}
 
-  i = 0;
-  while (i < argc){
-    fclose(f[i]);
-    i++;
-  }
+	i = 0;
+	while (i < argc){
+		fclose(f[i]);
+		i++;
+	}
 
 	return 0;
 }
