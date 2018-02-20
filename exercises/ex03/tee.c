@@ -29,11 +29,11 @@ int main(int argc, char **argv){
 		switch (ch)
 		{
 			case 'a':
-			append = 1;
-			break;
+				append = 1;
+				break;
 			default:
-			fprintf(stderr, "Unknown option: '%s'\n", optarg);
-			exit(1);
+				fprintf(stderr, "Unknown option: '%s'\n", optarg);
+				exit(1);
 		}
 	}
 
