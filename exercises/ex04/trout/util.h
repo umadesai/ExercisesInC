@@ -20,7 +20,6 @@
 #include <syslog.h>
 
 #define MAXLINE 4096
-#define BUFSIZE 1500
 
 typedef struct timeval Timeval;
 typedef struct sockaddr Sockaddr;
@@ -28,8 +27,6 @@ typedef struct sockaddr Sockaddr;
 /* the following are a few definitions from Stevens' unp.h */
 
 typedef	void Sigfunc(int);        /* for signal handlers */
-
-#define max(a,b) ((a) > (b) ? (a) : (b))
 
 /* the following are prototypes for the Stevens utilities in util.c */
 
