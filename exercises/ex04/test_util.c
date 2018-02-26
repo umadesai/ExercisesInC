@@ -14,14 +14,28 @@ int tests_run = 0;
 static char *test1() {
     char *res = icmpcode_v4(0);
     char *message = "test1 failed: icmpcode_v4(0) should return 'network unreachable'";
-    mu_assert(message, res == "network unreachable");
+    mu_assert(message, strcmp(res, "network unreachable") == 0);
     return NULL;
 }
 
-static char * all_tests() {
+static char *test2() {
+    char *res = icmpcode_v4(2);
+    char *message = "test1 failed: icmpcode_v4(0) should return 'protocol unreachable'";
+    mu_assert(message, strcmp(res, "protocol unreachable") == 0);
+    return NULL;
+}
+
+static char *test3() {
+    char *res = icmpcode_v4(15);
+    char *message = "test1 failed: icmpcode_v4(0) should return 'network unreachable'";
+    mu_assert(message, strcmp(res, "precedence cutoff in effect") == 0);
+    return NULL;
+}
+
+static char *all_tests() {
     mu_run_test(test1);
-    // mu_run_test(test2);
-    // mu_run_test(test3);
+    mu_run_test(test2);
+    mu_run_test(test3);
     return NULL;
 }
 
