@@ -19,7 +19,9 @@ If you convert it to a 16-bit number and accidentally apply sign extension, we s
 2) Write a C expression that computes the two's complement of 12 using the XOR bitwise operator. 
 Try it out and confirm that the result is interpreted as -12.
 
+```
 int comp = 12 ^ -8;
+```
 
 3) Can you guess why IEEE floating-point uses biased integers to represent the exponent rather than a
 sign bit or two's complement?
@@ -38,6 +40,7 @@ asInt: 3251634178 (much bigger)
 As a challenge, you can make a faster version by reading the string 32 or 64 bits at a time, rather than one
 character at a time.  This optimization is made easier if the length of the string is a multiple of 4 or 8 bytes.
 
+```
 void lowToUp(char string[])
 {
 	int i;
@@ -47,4 +50,4 @@ void lowToUp(char string[])
 	}
   printf("%s\n", string);
 }
-
+```
