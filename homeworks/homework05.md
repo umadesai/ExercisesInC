@@ -20,7 +20,7 @@ If you convert it to a 16-bit number and accidentally apply sign extension, we s
 Try it out and confirm that the result is interpreted as -12.
 
 ```
-int comp = 12 ^ -8;
+int comp = 12^-8;
 ```
 
 3) Can you guess why IEEE floating-point uses biased integers to represent the exponent rather than a
@@ -34,6 +34,7 @@ integers and comparing those integers.
 IEEE floating-point.  What would you get if you accidentally interpreted this value as an integer?
 
 -13 = 11000001110100000000000000000000
+
 asInt: 3251634178 (much bigger)
 
 5) Write a function that takes a string and converts from lower-case to upper-case by flipping the sixth bit.  
@@ -41,13 +42,11 @@ As a challenge, you can make a faster version by reading the string 32 or 64 bit
 character at a time.  This optimization is made easier if the length of the string is a multiple of 4 or 8 bytes.
 
 ```
-void lowToUp(char string[])
-{
-	int i;
-	for (i = 0; i < strlen(string); i++)
-	{
-		string[i] = string[i]^32;
-	}
+void lowToUp(char string[]) {
+  int i;
+    for (i = 0; i < strlen(string); i++){
+      string[i] = string[i]^32;
+    }
   printf("%s\n", string);
 }
 ```
