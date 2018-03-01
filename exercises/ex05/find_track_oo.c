@@ -52,7 +52,7 @@ int regex_match(Regex *regex, char *s) {
 * regex: Regex
 */
 void regex_free(Regex *regex) {
-    // FILL THIS IN!
+    regfree(&regex);
 }
 
 
