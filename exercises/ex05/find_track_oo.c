@@ -21,6 +21,7 @@ char tracks[][80] = {
 
 
 typedef struct {
+// regex -> inner_struct replaces &regex
     regex_t inner_struct[1];
 } Regex;
 
