@@ -114,8 +114,8 @@ int point_in_rect(Point *p, Rectangle *rect) {
     // FILL THIS IN
     double left_x = rect->corner->x;
     double bottom_y = rect->corner->y;
-    
-    if (p->x < left_x | p->y < bottom_y | p->x > left_x + rect->width | p->y > bottom_y + rect->height){
+
+    if ((p->x < left_x)| (p->y < bottom_y) | (p->x > left_x + rect->width) | (p->y > bottom_y + rect->height)){
       return 0;
     }
 
@@ -154,7 +154,7 @@ void test_point_in_rect(Point *point, Rectangle *rectangle)
     printf("%s %s %s\n", p_str, res, r_str);
 }
 
-void main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
     test_point();
     test_rectangle();
@@ -170,4 +170,6 @@ void main (int argc, char *argv[])
     test_point_in_rect(point2, rectangle);
 
     free_rectangle(rectangle);
+
+    return 0;
 }
