@@ -1,5 +1,4 @@
 /*  Test code for the functions in rand.c
-
 Copyright 2016 Allen B. Downey
 License: MIT License https://opensource.org/licenses/MIT
 */
@@ -32,7 +31,6 @@ double get_seconds() {
 }
 
 /* Compute the total time used by a function.
-
 iters: number of times to call the function
 func: function to call
 */
@@ -76,4 +74,10 @@ main(int argc, char *argv[])
 
     time = time_func(iters, random_float);
     printf("%f ms \t random_float\n", time);
+
+    time = time_func(iters, my_random_double);
+    printf("%f ms \t my_random_double\n", time);
+
+    time = time_func(iters, random_double);
+    printf("%f ms \t random_double\n", time);
 }

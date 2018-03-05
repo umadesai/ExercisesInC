@@ -1,5 +1,4 @@
 /*  Implementations of several methods for generating random floating-point.
-
 Copyright 2016 Allen B. Downey
 License: MIT License https://opensource.org/licenses/MIT
 */
@@ -78,7 +77,36 @@ float my_random_float2()
 // compute a random double using my algorithm
 double my_random_double()
 {
-    // TODO: fill this in
+  int x, int mant;
+  long exp = 1022;
+  int mask = 1;
+
+  union {
+    double d;
+    int i;
+  } b;
+
+  // generate random bits until we see the first set bit
+  while (1) {
+    x = random();
+    if (x == 0) {
+      exp -= 63;
+    } else {
+      break;
+    }
+  }
+
+  // find the location of the first set bit and compute the exponent
+  while (x & mask) {
+    mask <<= 1;
+    exp--;
+  }
+
+  // use the remaining bit as the mantissa
+  mant = x >> 11;
+  b.i = (exp << 52) | mant;
+
+  return b.d;
 }
 
 // return a constant (this is a dummy function for time trials)
