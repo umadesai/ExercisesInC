@@ -11,8 +11,8 @@ License: Creative Commons Attribution-ShareAlike 3.0
 #include <stdlib.h>
 
 typedef struct node {
-    int val;
-    struct node *next;
+  int val;
+  struct node *next;
 } Node;
 
 
@@ -24,10 +24,10 @@ typedef struct node {
 * returns: pointer to a new node
 */
 Node *make_node(int val, Node *next) {
-    Node *node = malloc(sizeof(Node));
-    node->val = val;
-    node->next = next;
-    return node;
+  Node *node = malloc(sizeof(Node));
+  node->val = val;
+  node->next = next;
+  return node;
 }
 
 
@@ -36,14 +36,14 @@ Node *make_node(int val, Node *next) {
 * list: pointer to pointer to Node
 */
 void print_list(Node **list) {
-    Node *current = *list;
+  Node *current = *list;
 
-    printf("[ ");
-    while (current != NULL) {
-        printf("%d ", current->val);
-        current = current->next;
-    }
-    printf("]\n");
+  printf("[ ");
+  while (current != NULL) {
+    printf("%d ", current->val);
+    current = current->next;
+  }
+  printf("]\n");
 }
 
 
@@ -54,8 +54,11 @@ void print_list(Node **list) {
 * returns: int or -1 if the list is empty
 */
 int pop(Node **list) {
-    // FILL THIS IN!
-    return 0;
+  // FILL THIS IN!
+  if (list == NULL) return -1;
+  Node *first = *list;
+  *list = first->next;
+  return first->val;
 }
 
 
@@ -65,7 +68,11 @@ int pop(Node **list) {
 * val: value to add
 */
 void push(Node **list, int val) {
-    // FILL THIS IN!
+  // FILL THIS IN!
+  Node *head = malloc(sizeof(Node));
+  head->val = val;
+  head->next = *list;
+  *list = head;
 }
 
 
@@ -79,8 +86,23 @@ void push(Node **list, int val) {
 * returns: number of nodes removed
 */
 int remove_by_value(Node **list, int val) {
-    // FILL THIS IN!
-    return 0;
+  // FILL THIS IN!
+  Node *curr = *list;
+  if (curr->val == val && curr->next == NULL) {
+    curr = NULL;
+    return 1;
+  }
+  Node *prev = curr;
+  curr = curr->next;
+  while (curr != NULL) {
+    if (curr->val == val) {
+      prev->next = curr->next;
+      return 1;
+    }
+    prev = curr;
+    curr = curr->next;
+  }
+  return 0;
 }
 
 
@@ -91,31 +113,43 @@ int remove_by_value(Node **list, int val) {
 * list: pointer to pointer to Node
 */
 void reverse(Node **list) {
-    // FILL THIS IN!
+  // FILL THIS IN!
+  Node *curr = *list;
+  Node *next = curr->next;
+  Node *prev = NULL;
+  while (curr->next != NULL) {
+    curr->next = prev;
+    prev = curr;
+    curr = next;
+    next = curr->next;
+  }
+  curr->next = prev;
+  *list = curr;
 }
 
 
 int main() {
-    Node *head = make_node(1, NULL);
-    head->next = make_node(2, NULL);
-    head->next->next = make_node(3, NULL);
-    head->next->next->next = make_node(4, NULL);
+  Node *head = make_node(1, NULL);
+  head->next = make_node(2, NULL);
+  head->next->next = make_node(3, NULL);
+  head->next->next->next = make_node(4, NULL);
 
-    Node **list = &head;
-    print_list(list);
+  Node **list = &head;
+  print_list(list);
 
-    int retval = pop(list);
-    print_list(list);
 
-    push(list, retval+10);
-    print_list(list);
+  int retval = pop(list);
+  print_list(list);
 
-    remove_by_value(list, 3);
-    print_list(list);
+  push(list, retval+10);
+  print_list(list);
 
-    remove_by_value(list, 7);
-    print_list(list);
+  remove_by_value(list, 3);
+  print_list(list);
 
-    reverse(list);
-    print_list(list);
+  remove_by_value(list, 7);
+  print_list(list);
+
+  reverse(list);
+  print_list(list);
 }
