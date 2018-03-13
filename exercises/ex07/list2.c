@@ -54,6 +54,9 @@ void print_list(Node *list) {
 */
 Node *pop(Node *list, int *value_p) {
     // FILL THIS IN
+    Node *head = list;
+    *value_p = head->val;
+    list = head->next;
     return list;
 }
 
@@ -111,6 +114,7 @@ int main() {
     int value;
     list = pop(list, &value);
     print_list(list);
+    printf("%d\n", value);
 
     list = reverse(list);
     print_list(list);
