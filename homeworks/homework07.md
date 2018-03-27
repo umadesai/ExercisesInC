@@ -42,11 +42,7 @@ Not necessarily, because a program can be refactored to improve locality without
 6) See if you can estimate the cost of a memory cache by comparing the prices of two similar CPUs with 
 different cache sizes.
 
-An Intel i5-8400 has a 9MiB cache and costs $179. An Intel i5-7400 has a 6MiB cache and costs $174.
-
-That's a $5 difference or $1.66/MiB or about $1700/GiB.
-
-The Intel Core i7-7700T Processor with an 8 MB Cache costs $289.11, and an Intel Core i7-8700K Processor with a 12 MB Cache costs $319.99. If the difference in price between the two processors is based on the cache size, it would imply a value of ~$245/MB.
+An Intel i5-8400 has a 9MiB cache and costs $179. An Intel i5-7400 has a 6MiB cache and costs $174. That's a $5 and 3MiB cache difference which translates to ~$1.7/MiB.
 
 7) Why are cache policies generally more complex at the bottom of the memory hierarchy?
 
