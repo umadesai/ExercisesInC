@@ -38,15 +38,35 @@ int main(int argc, char *argv[])
     int num_feeds = 5;
     char *search_phrase = argv[1];
     char var[255];
+    int i;
+    int child;
 
-    for (int i=0; i<num_feeds; i++) {
+    for (i=0; i<num_feeds; i++) {
         sprintf(var, "RSS_FEED=%s", feeds[i]);
         char *vars[] = {var, NULL};
 
-        int res = execle(PYTHON, PYTHON, SCRIPT, search_phrase, NULL, vars);
-        if (res == -1) {
-            error("Can't run script.");
+        // Add code to fork one process for each feed,
+        // so you have five instances of rssgossip.py running concurrently
+        pid_t pid1 = fork();
+        if (pid1 == -1) {
+          error("Can't fork.");
+          return 1;
         }
+
+        if (pid1 == 0) {
+          int res = execle(PYTHON, PYTHON, SCRIPT, search_phrase, NULL, vars);
+          if (res == -1) {
+            error("Can't run script.");
+            return 1;
+          }
+        } else {
+          // Add code so that the parent thread waits for the child processes to complete
+          pid_t pid2 = wait(&child);
+          while (pid2 != pid1){
+            pid2 = wait(&child);
+          }
+        }
+
     }
     return 0;
 }

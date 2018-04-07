@@ -18,6 +18,9 @@ License: MIT License https://opensource.org/licenses/MIT
 // errno is an external global variable that contains
 // error information
 extern int errno;
+// introducing new variables to test what is shared in global, heap, and stack segments
+int test_global = 4;
+int *test_pointer = NULL;
 
 
 // get_seconds returns the number of seconds since the
@@ -34,6 +37,10 @@ void child_code(int i)
 {
     sleep(i);
     printf("Hello from child %d.\n", i);
+    *test_pointer++;
+    test_global++;
+    printf("global test 1: %d\n", test_global);
+    printf("pointer test 1: %d\n", *test_pointer);
 }
 
 // main takes two parameters: argc is the number of command-line
@@ -41,6 +48,8 @@ void child_code(int i)
 // line arguments
 int main(int argc, char *argv[])
 {
+    test_pointer = malloc(sizeof(int));
+    *test_pointer = 4;
     int status;
     pid_t pid;
     double start, stop;
@@ -79,6 +88,8 @@ int main(int argc, char *argv[])
 
     /* parent continues */
     printf("Hello from the parent.\n");
+    printf("pointer test 2: %d\n", *test_pointer);
+    printf("global test 2: %d\n", test_global);
 
     for (i=0; i<num_children; i++) {
         pid = wait(&status);
