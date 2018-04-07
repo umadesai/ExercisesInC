@@ -23,7 +23,7 @@ pthread_exit passes a value to the thread that joins with the current thread.
 
 4) Normally the same thread that created a thread also waits to join it. What happens if another thread tries to join a thread it did not create? 
 
-Any thread can join any other thread, but in the most common pattern the parent thread creates and joins all child threads. 
+If another thread tries to join a thread it did not create, it waits for that thread to complete and then continues.
 
 
 5) What goes wrong if several threads try to increment a shared integer at the same time?
