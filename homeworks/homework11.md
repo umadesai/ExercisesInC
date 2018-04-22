@@ -19,7 +19,7 @@ When you use a semaphore as a mutex, you usually initialize it to 1 to indicate 
 
 3) Can you think of another use for a Semaphore where you might use a different initial value?
 
-
+You could potentially only have one thread and use an initial value of 0 to represent a locked mutex.
 
 4) In my solution to the producers-consumers problem using Semaphores,
 what does it mean if the value of `queue->spaces` is `3` at some point in time?
@@ -28,16 +28,16 @@ It means that there are 3 empty spaces in the queue, which is the number of prod
 
 5) What does it mean if `queue->space` is `-3`?
 
-
+There are 3 extra producer threads.
 
 6) Why doesn't `queue_pop` have to use `queue_empty` to check whether the queue is empty?
 
-
+Because it's already tracking the items in the queue so it already knows if the queue is empty or not.
 
 7) Any problem that can be solved with Semaphores can also be solved with mutexes and condition variables.
 How can you prove that that's true?
 
-
+By implemeting a semaphore with mutexes and condition variables.
 
 8) What is Property 3?  Hint: see *The Little Book of Semaphores*, 
 [Section 4.3](http://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf). 
