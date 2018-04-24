@@ -39,9 +39,7 @@ How can you prove that that's true?
 
 By implemeting a semaphore with mutexes and condition variables.
 
-8) What is Property 3?  Hint: see *The Little Book of Semaphores*, 
-[Section 4.3](http://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf). 
+8) What is Property 3?  Hint: see *The Little Book of Semaphores*,
+[Section 4.3](http://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf).
 
 Property 3: if there are threads waiting on a semaphore when a thread executes signal, then one of the waiting threads has to be woken.
-
-
