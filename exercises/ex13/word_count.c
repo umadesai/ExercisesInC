@@ -34,6 +34,7 @@ void pair_printor(gpointer value, gpointer user_data)
 {
     Pair *pair = (Pair *) value;
     printf("%d\t %s\n", pair->freq, pair->word);
+    free(pair);
 }
 
 
@@ -67,9 +68,11 @@ void incr(GHashTable* hash, gchar *key)
         gint *val1 = g_new(gint, 1);
         *val1 = 1;
         g_hash_table_insert(hash, key, val1);
+        free(val1);
     } else {
         *val += 1;
     }
+    free(val);
 }
 
 int main(int argc, char** argv)
@@ -86,6 +89,8 @@ int main(int argc, char** argv)
     FILE *fp = g_fopen(filename, "r");
     if (fp == NULL) {
         perror(filename);
+        free(fp);
+        free(filename);
         exit(-10);
     }
 
@@ -104,6 +109,8 @@ int main(int argc, char** argv)
         for (int i=0; array[i] != NULL; i++) {
             incr(hash, array[i]);
         }
+        g_strfreev(array);
+        free(res);
     }
     fclose(fp);
 

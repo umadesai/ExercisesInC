@@ -209,7 +209,26 @@ int main() {
     print_list(&empty);
 
     Node *something = make_something();
-    free(something);
+
+    // free everything
+    while(something != NULL) {
+      Node *next = something->next;
+      free(something);
+      something = next;
+    }
+
+    while(empty != NULL) {
+      Node *next = empty->next;
+      free(empty);
+      empty = next;
+    };
+
+    while(test_list != NULL) {
+      Node *next = test_list->next;
+      free(test_list);
+      test_list = next;
+    }
+
 
     return 0;
 }
